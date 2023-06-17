@@ -7,37 +7,17 @@
  */
 int main(void)
 {
-	int digit1 = 0;
-	int digit2;
-	int digit3;
+	int i;
 
-	while (digit1 <= 7)
+	for (i = 0; i <= 9; i++)
 	{
-		digit2 = digit1 + 1;
-		while (digit2 <= 8)
+		putchar(i + '0');
+		if (i != 9)
 		{
-			digit3 = digit2 + 1;
-			while (digit3 <= 9)
-			{
-				putchar(digit1 + '0');
-				putchar(digit2 + '0');
-				putchar(digit3 + '0');
-
-				if (digit1 != 7 || digit2 != 8 || digit3 != 9)
-				{
-					putchar(',');
-					putchar(' ');
-				}
-
-				digit3++;
-			}
-			digit2++;
+			putchar(',');
+			putchar(' ');
 		}
-		digit1++;
 	}
-
-	putchar('\n');
-
 	return (0);
-}
 
+}
