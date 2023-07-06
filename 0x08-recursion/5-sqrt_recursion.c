@@ -1,6 +1,15 @@
 #include "main.h"
 
 /**
+ * sqrt_helper - Helper function to find the square root recursively
+ * @n: The number to find the square root of
+ * @i: The current number to check as a possible square root
+ *
+ * Return:The square root of n, or -1 if it does not have a natural square root
+ */
+int sqrt_helper(int n, int i);
+
+/**
  * _sqrt_recursion - Returns the natural square root of a number
  * @n: The number to find the square root of
  *
@@ -30,6 +39,5 @@ int sqrt_helper(int n, int i)
 		return (i);
 
 	return (sqrt_helper(n, i + 1));
-	/* Recursive callwith next possible square root */
 }
 
