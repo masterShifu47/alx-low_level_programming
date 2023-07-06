@@ -8,12 +8,11 @@
  */
 int _strlen(char *s)
 {
-	int len = 0;
+	if (*s == '\0') /* Base case: end of string */
+		return (0);
 
-	while (s[len] != '\0')
-		len++;
-
-	return (len);
+	return (1 + _strlen(s + 1));
+	/* Recursive call to calculate length of remaining string */
 }
 
 /**
@@ -46,6 +45,7 @@ int is_palindrome_helper(char *s, int start, int end)
 int is_palindrome(char *s)
 {
 	int len = _strlen(s);
-		return (is_palindrome_helper(s, 0, len - 1));
+
+	return (is_palindrome_helper(s, 0, len - 1));
 }
 
