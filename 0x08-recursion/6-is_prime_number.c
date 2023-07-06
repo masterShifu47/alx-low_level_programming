@@ -1,6 +1,15 @@
 #include "main.h"
 
 /**
+ * is_prime_helper - Helper function to check if a number is prime recursively
+ * @n: The number to be checked
+ * @i: The divisor to check divisibility with
+ *
+ * Return: 1 if the number is prime, 0 otherwise
+ */
+int is_prime_helper(int n, int i);
+
+/**
  * is_prime_number - Checks if a number is prime
  * @n: The number to be checked
  *
@@ -31,6 +40,6 @@ int is_prime_helper(int n, int i)
 			return (0);
 	}
 
-	return (is_prime_helper(n, i + 1));
+	return (is_prime_helper(n, i + 1)); /* Recursive call with next divisor */
 }
 
