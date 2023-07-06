@@ -9,13 +9,14 @@
  */
 int wildcmp(char *s1, char *s2)
 {
-	if (*s1 == '\0' && *s2 == '\0') /* Base case: Both strings are empty */
+	if (*s1 == '\0' && *s2 == '\0')
+		/* Base case: Both strings are empty */
 		return (1);
 
 	if (*s2 == '*') /* Special case: '*' can replace any string */
 	{
 		if (*s1 == '\0' && *(s2 + 1) == '\0')
-/* If s1 is empty and s2 has only '*', they are considered identical */
+	/* If s1 is empty and s2 has only '*', they are considered identical */
 			return (1);
 		if (*s1 == *s2 && wildcmp(s1 + 1, s2 + 1))
 		/* Recursive call to check if rest of the strings match */
