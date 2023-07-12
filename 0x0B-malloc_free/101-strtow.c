@@ -1,99 +1,39 @@
-#include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+char **strtow(char *);
 
 /**
- * count_words - Counts the number of words in a string
- * @str: The input string
- *
- * Return: The number of words
+ * print_tab - Prints an array of strings
+ * @tab: The array to print
  */
-int count_words(char *str)
+void print_tab(char **tab)
 {
-	int count = 0, i = 0;
-
-	while (str[i])
-	{
-		if (str[i] != ' ')
-		{
-			count++;
-			while (str[i] && str[i] != ' ')
-				i++;
-		}
-		else
-			i++;
-	}
-
-	return (count);
-}
-
-/**
- * allocate_memory - Allocates memory for words array
- * @str: The input string
- * @word_count: The number of words
- *
- * Return: Pointer to the allocated memory
- */
-char **allocate_memory(char *str, int word_count)
-{
-	char **words;
 	int i;
 
-	words = malloc(sizeof(char *) * (word_count + 1));
-	if (words == NULL)
-		return (NULL);
-
-	for (i = 0; i < word_count; i++)
+	for (i = 0; tab[i] != NULL; ++i)
 	{
-		words[i] = malloc(sizeof(char) * (strlen(str) + 1));
-		if (words[i] == NULL)
-		{
-			while (i >= 0)
-				free(words[i--]);
-			free(words);
-			return (NULL);
-		}
+		printf("%s\n", tab[i]);
 	}
-
-	return (words);
 }
 
 /**
- * strtow - Splits a string into words
- * @str: The input string
+ * main - check the code.
  *
- * Return: If str == NULL, str == "", or the function fails - NULL.
- *         Otherwise - a pointer to a 2D array of strings (words).
+ * Return: Always 0.
  */
-char **strtow(char *str)
+int main(void)
 {
-	char **words;
-	int i, j = 0, k = 0, word_count = 0, word_len = 0;
+	char **tab;
 
-	if (str == NULL || str[0] == '\0')
-		return (NULL);
-
-	word_count = count_words(str);
-
-	words = allocate_memory(str, word_count);
-	if (words == NULL)
-		return (NULL);
-
-	for (i = 0; i < word_count; i++)
+	tab = strtow("Talk is cheap. Show me the code.");
+	if (tab == NULL)
 	{
-		while (str[j] == ' ')
-			j++;
-
-		word_len = 0;
-		while (str[j + word_len] && str[j + word_len] != ' ')
-			word_len++;
-
-		strncpy(words[i], &str[j], word_len);
-		words[i][word_len] = '\0';
-		j += word_len;
+		printf("Failed\n");
+		return (1);
 	}
-
-	words[i] = NULL;
-
-	return (words);
+	print_tab(tab);
+	return (0);
 }
 
